@@ -70,6 +70,7 @@ __heap_size__ = 0x6000;
 HEAP_SIZE  = DEFINED(__heap_size__)  ? __heap_size__  : 0x0400;
 STACK_SIZE = DEFINED(__stack_size__) ? __stack_size__ : 0x0400;
 M_VECTOR_RAM_SIZE = DEFINED(__ram_vector_table__) ? 0x0400 : 0x0;
+ATTESTATION_SIZE = DEFINED(ATTESTATION_SIZE) ? ATTESTATION_SIZE : 0x200;
 
 /* Specify the memory areas */
 MEMORY
@@ -185,6 +186,22 @@ SECTIONS
     KEEP (*(.fini_array*))
     PROVIDE_HIDDEN (__fini_array_end = .);
   } > m_text
+
+  .no_zeroed (NOLOAD):
+  {
+    . = ALIGN(4);
+    __no_load_crc8 = .;
+    . = . + 1;    
+    __Mainboot_selector = .;
+    . = . + 1;
+    __Image_selector = .;
+    . = . + 1;
+    __attestation_start__ = .;
+	*(.attestation*)
+	*(.attestation)    
+	. = . + ATTESTATION_SIZE;
+    __attestation_end__ = .;
+  } > m_data
 
   .interrupts_ram :
   {
