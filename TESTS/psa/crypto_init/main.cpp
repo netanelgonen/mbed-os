@@ -16,7 +16,11 @@
 * limitations under the License.
 */
 
+<<<<<<< HEAD
 #if ((!defined(TARGET_PSA)) || (!defined(COMPONENT_PSA_SRV_IPC)) || (!defined(MBEDTLS_PSA_CRYPTO_C)))
+=======
+#if ((!defined(TARGET_PSA)) || (!defined(MBEDTLS_PSA_CRYPTO_C)))
+>>>>>>> fIX CRYPTO INIT TEST
 #error [NOT_SUPPORTED] Mbed SPM Crypto is OFF - skipping.
 #endif // TARGET_PSA
 
