@@ -23,7 +23,7 @@
 
 #include <stdlib.h>
 #include <string.h>
-#include "psa_psa_f_ifs.h"
+#include "psa_crypto_ifs.h"
 
 #include "spm/psa_defs.h"
 #include "spm/spm_client.h"
@@ -1067,7 +1067,7 @@ psa_status_t mbedtls_psa_inject_entropy(const unsigned char *seed,
 
     handle = psa_connect(PSA_ENTROPY_ID, MINOR_VER);
     if (handle <= 0) {
-        return (PSA_ERROR_COMMUNICATION_FAILURE);
+        return (PSA_ERROR_NOT_SUPPORTED);
     }
 
     err_call = psa_call(handle, &in_vec, 1, NULL, 0);

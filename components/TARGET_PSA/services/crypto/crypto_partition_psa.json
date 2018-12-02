@@ -1,9 +1,9 @@
 {
-  "name": "PSA_F",
+  "name": "CRYPTO",
   "type": "APPLICATION-ROT",
   "priority": "NORMAL",
   "id": "0x00000023",
-  "entry_point": "part_main",
+  "entry_point": "crypto_main",
   "stack_size": "0x4000",
   "heap_size": "0x400",
   "services": [
@@ -103,6 +103,6 @@
     "PSA_ITS_REMOVE"
   ],
   "source_files": [
-    "COMPONENT_SPE/psa_crypto_partition.c"
+    "COMPONENT_SPE/crypto_partition.c"
   ]
 }
